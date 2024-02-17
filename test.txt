@@ -1,0 +1,10 @@
+/*	Para ejecutar el programa, escribir por consola:	*/
+/*	Aleph < [nombre del archivo .txt]*/
+a={'a'};
+print(a);
+let cam(e){
+    a=[];
+}
+cam('a');
+print(a);
+return a;

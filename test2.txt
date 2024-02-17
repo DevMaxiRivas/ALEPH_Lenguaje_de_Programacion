@@ -1,0 +1,16 @@
+/*	Para ejecutar el programa, escribir por consola:	*/
+/*	Aleph < [nombre del archivo .txt]*/
+p = {{'q0'},{'q0','q1'},{'q2','q0'}};
+print(p);
+u = {{'q0'},{'q0','q1'}};
+print(u);
+c=p-u;
+print(c);
+
+a={'a','c','x'};
+b={'a','c','x'};
+d=a-b;
+print(d);
+
+/* Los programas deben terminar con un salto de linea */
+/* Es decir debe quedar una linea de codigo al final vacia */

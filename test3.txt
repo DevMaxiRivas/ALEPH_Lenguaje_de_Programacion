@@ -1,0 +1,23 @@
+/*	Para ejecutar el programa, escribir por consola:	*/
+/*	Aleph < [nombre del archivo .txt]*/
+a={};
+b={'a'};
+let vacio(c){
+    if a < b{
+        print(a);
+    }else{
+        print(b);
+    }
+}
+let noVacio(d){
+    if a <= b{
+            print(a);
+        }else{
+            print(b);
+        }
+}
+vacio({});
+noVacio({});
+
+/* Los programas deben terminar con un salto de linea */
+/* Es decir debe quedar una linea de codigo al final vacia */

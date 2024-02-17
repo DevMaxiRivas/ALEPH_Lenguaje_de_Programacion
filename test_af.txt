@@ -1,0 +1,64 @@
+/*	Para ejecutar el programa, escribir por consola:	*/
+/*	Aleph < [nombre del archivo .txt]*/
+/* AFND de entrada */
+/*[{q0,q1,q2},{0,1},{[q0,0,{q0,q1}],[q0,1,{q0}],[q1,0,{}],[q1,1,{q2}],[q2,0,{}],[q2,1,{}]},q0,{q2}]*/
+/* AF retornado despues de ejecutar el programa */
+/*[{{'q0'},{'q0','q1'},{'q0','q2'}},{'0','1'},{[{'q0'},'0',{'q0','q1'}],[{'q0'},'1',{'q0'}],[{'q0','q1'},'0',{'q0','q1'}],[{'q0','q1'},'1',{'q0','q2'}],[{'q0','q2'},'0',{'q0','q1'}],[{'q0','q2'},'1',{'q0'}]},{'q0'},{{'q0','q2'}}]*/
+
+let AFNDtoAFD(AF){
+	F = Pop(AF);
+	q0 = Pop(AF);
+	delta = Pop(AF); 
+	alfabeto = Pop(AF);  
+	Q = Pop(AF);
+	Qb = {}; 
+	q0b = {q0};
+	q0 = {q0b};
+	Qb = Qb + q0;
+	Qv = {};
+	deltab = {};
+	Fb = {};
+	for each qAux in Qb-Qv {
+		Qv=Qb; 
+		for each b in alfabeto{
+			nuevo_estado = {};
+			tran=[qAux,b];
+			for each c in qAux{
+				estado1=c;
+				for each ternaAux in delta{
+					terna = ternaAux;
+					pop(terna);
+					pop(terna);
+					estado2 = Pop(terna);
+					terna = ternaAux;
+					Pop(terna);
+					alf1 = Pop(terna);
+					terna = ternaAux;
+					if estado1 == estado2 && alf1 == b {
+						estAux = Pop(terna);	
+						nuevo_estado = nuevo_estado + estAux;
+						nuevo_estado1 = nuevo_estado;
+					}
+				}
+			}
+			Push(tran, nuevo_estado);
+			rama={ tran };
+			deltab = deltab + rama;
+			nuevo_estado = { nuevo_estado };
+			Qb = Qb + nuevo_estado;
+			if F * nuevo_estado1 != {} {
+				Fb = Fb + { nuevo_estado1 };
+			}
+		}
+	}
+	B=[Qb,alfabeto,deltab,q0b,Fb];
+	return B;
+}
+a=[{'q0','q1','q2'},{'0','1'},{['q0','0',{'q0','q1'}],['q0','1',{'q0'}],['q1','0',{}],['q1','1',{'q2'}],['q2','0',{}],['q2','1',{}]},'q0',{'q2'}];
+print(a);
+res = AFNDtoAFD(a);
+print(a);
+print(res);
+
+/* Los programas deben terminar con un salto de linea */
+/* Es decir debe quedar una linea de codigo al final vacia */
